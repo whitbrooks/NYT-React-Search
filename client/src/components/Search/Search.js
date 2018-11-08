@@ -24,13 +24,8 @@ const Search = () => (
 
 
                             <div className="form-group">
-                                <label for="pwd">Number of Records to Retrieve:</label>
-                                <select id="article-count" className="custom-select" aria-labelledby="dropdownMenuButton">
-                                    <option selected value="1">1</option>
-
-                                    <option value="5" selected>5</option>
-                                    <option value="10">10</option>
-                                </select>
+                            <label for="formGroupExampleInput">Example label</label>
+                            <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input"></input>
                             </div>
 
 
