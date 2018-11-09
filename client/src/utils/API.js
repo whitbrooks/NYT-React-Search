@@ -1,11 +1,10 @@
-// import axios from "axios";
+import axios from "axios";
+const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
+const APIKEY = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
-// const BASEURL = "https://api.giphy.com/v1/gifs/search?q=";
-// const APIKEY = "&api_key=dc6zaTOxFJmzC&limit=20";
+export default {
+  search: function(query) {
+    return axios.get(BASEURL + query + APIKEY);
+  }
+};
 
-// // Export an object with a "search" method that searches the Giphy API for the passed query
-// export default {
-//   search: function(query) {
-//     return axios.get(BASEURL + query + APIKEY);
-//   }
-// };
