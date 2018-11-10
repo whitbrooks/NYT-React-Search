@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Jumbotron from "./Jumbotron";
-import Results from "./Results";
-import Search from "./Search";
-import API from "../utils/API";
+import Jumbotron from "./components/Jumbotron";
+import Results from "./components/Results";
+import Search from "./components/Search";
+import API from "./utils/API";
+import axios from "axios";
 
 class App extends Component {
   state = {
@@ -20,7 +21,7 @@ class App extends Component {
 
   getSearched = (topic, startDate, endDate) => {
     console.log("getSearched");
-    api.search(topic, startDate, endDate)
+    API.search(topic, startDate, endDate)
       .then(articles => {
         console.log(articles);
         this.setState({ searchedArticles: articles.data });
@@ -56,18 +57,13 @@ class App extends Component {
     return (
       <div className="container">
         <Jumbotron />
-        <SearchComponent 
+        <Search
           handleFormReset={this.handleFormReset}
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <ArticlesComponent
-          title="Search Results"
+        <Results
           articles={this.state.searchedArticles}
-        />
-        <ArticlesComponent
-          title="Saved Articles"
-          articles={this.state.savedArticles}
         />
       </div>
     );
