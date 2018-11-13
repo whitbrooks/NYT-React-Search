@@ -9,39 +9,32 @@ const Search = () => (
                 <div className="card">
                     <div className="card-header">
                         <strong>
-                            <i className="fa fa-list-alt"></i> Search Parameters</strong>
+                            <i className="fa fa-list-alt"></i>Search</strong>
                     </div>
                 </div>
 
                 <div className="card-body">
 
-                    <form role="form">
+                    <form>
 
                         <div className="form-group"> 
                             <label for="search">Search Term:</label>
                             <input type="text" className="form-control" id="search-term"></input>
                         </div>
 
-
-                            <div className="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input"></input>
-                            </div>
-
-
-                            <div className="form-group">
-                                <label for="start-year">Start Year (Optional):</label>
-                                <input type="text" className="form-control" id="start-year"></input>
-                            </div>
+                        <div className="form-group">
+                            <label for="start-year">Start Year (Optional):</label>
+                            <input type="text" className="form-control" id="start-year"></input>
+                        </div>
 
 
-                            <div className="form-group">
-                                <label for="end-year">End Year (Optional):</label>
-                                <input type="text" className="form-control" id="end-year"></input>
-                            </div>
+                        <div className="form-group">
+                            <label for="end-year">End Year (Optional):</label>
+                            <input type="text" className="form-control" id="end-year"></input>
+                        </div>
 
-                                    <button type="submit" className="btn btn-default" id="run-search"><i className="fa fa-search"></i> Search</button>
-                                    <button className="btn btn-default" id="clear-all"><i className="fa fa-trash"></i> Clear Results</button>
+                        <button type="submit" className="btn btn-default" id="run-search"><i className="fa fa-search"></i> Search</button>
+                        <button className="btn btn-default" id="clear-all"><i className="fa fa-trash"></i> Clear Results</button>
 
                     </form>
                 </div>

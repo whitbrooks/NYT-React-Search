@@ -10,7 +10,7 @@ const Results = () => (
 
                 <div className="card-header">
                     <strong>
-                        <i className="fa fa-table"></i> Top Articles</strong>
+                        <i className="fa fa-table"></i>Results</strong>
                 </div>
 
                 <div className="card-body" id="article-section">
