@@ -84,6 +84,7 @@ class Main extends Component {
         title={save.title}
         date={save.date}
         url={save.url}
+        handleRemoveButton={this.handleRemoveButton}
       />
     ));
   }
@@ -97,9 +98,7 @@ class Main extends Component {
           handleFormSubmit={this.handleFormSubmit}
         />
         {this.renderResults()}
-        <Saved
-          renderSaved={this.state.renderSaved}
-        />
+        {this.renderSaved()}
       </div>
     );
   }
