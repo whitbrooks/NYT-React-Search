@@ -1,12 +1,12 @@
-require('dotenv').config()
 import axios from "axios";
-const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
-const APIKEY = process.env.APIKEY;
+require('dotenv').config()
+const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
+const APIKEY = process.env.KEY;
 
 export default {
   // Query NYT API 
   search: function(query) {
-    return axios.get(BASEURL + query + APIKEY);
+    return axios.get(BASEURL + APIKEY + "&q=" + query);
   },
   // Gets all articles
   getSaved: function() {

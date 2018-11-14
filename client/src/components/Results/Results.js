@@ -1,7 +1,7 @@
 import React from "react";
 import "./Results.css";
 
-const Results = () => (
+const Results = props => (
 
     <div className="row">
         <div className="col-sm-12">
@@ -9,11 +9,16 @@ const Results = () => (
             <div className="card">
 
                 <div className="card-header">
-                    <strong>
-                        <i className="fa fa-table"></i>Results</strong>
+                    <strong><i className="fa fa-table"></i>Results</strong>
                 </div>
 
-                <div className="card-body" id="article-section">
+                <div className="card-body">
+                    <h3>{props.title}</h3>
+                    <p>{props.date}</p>
+                    <a href={props.url} target="_blank">
+                        <button className="btn btn-default ">View Article</button>
+                    </a>
+                    <button className="btn btn-primary" onClick={() => props.handleSaveButton(props._id)}>Save</button>
                 </div>
             </div>
         </div>

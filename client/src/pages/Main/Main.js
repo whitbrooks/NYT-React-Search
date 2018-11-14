@@ -4,31 +4,32 @@ import Search from "../../components/Search";
 import Results from "../../components/Results";
 import Saved from "../../components/Saved";
 import API from "../../utils/API";
-import axios from "axios";
 
-class App extends Component {
+class Main extends Component {
+  
   state = {
     search: "",
-    result: {},
-    saved: {},
+    result: [],
+    saved: [],
+
   };
 
   componentDidMount() {
     this.getSaved();
   }
- 
-  getSearched = (query) => {
-    console.log("getSearched");
+
+  searchArticles = query => {
     API.search(query)
-    .then(res => this.setState({ result: res.data }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ result: res.data }))
+      .catch(err => console.log(err));
   };
+
   
   getSaved = () => {
     console.log("getSaved");
-    axios.get("/api/article")
-      .then(response => {
-        this.setState({ saved: response });
+    API.getSaved()
+      .then(res => {
+        this.setState({ saved: res.data });
       });
   }  
 
@@ -42,28 +43,64 @@ class App extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.getSearched(this.state.search);
+    this.searchArticles(this.state.search);
   };
+
+
+  handleSaveButton = (id) => {
+    console.log("saveArticle");
+    API.saveArticle(id)
+      .then(this.getSaved());
+  }
+
+  handleRemoveButton = (id) => {
+    console.log("removeArticle");
+    API.deleteArticle(id)
+      .then(this.getSaved());
+  }
+
+  renderResults = () => {
+    return this.state.articles.map(article => (
+      <Results
+        _id={article._id}
+        key={article._id}
+        title={article.headline.main}
+        date={article.pub_date}
+        url={article.web_url}
+      />
+    ));
+  }
+
+  renderSaved = () => {
+    return this.state.saved.map(save => (
+      <Saved
+        _id={save._id}
+        key={save._id}
+        title={save.title}
+        date={save.date}
+        url={save.url}
+      />
+    ));
+  }
 
   render() {
     return (
       <div className="container">
         <Jumbotron />
         <Search
-          // handleFormReset={this.handleFormReset}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
-          
         />
         <Results
-          articles={this.state.result}
+          renderResults={this.renderResults}
+      
         />
         <Saved
-          articles={this.state.saved}
+          renderSaved={this.state.renderSaved}
         />
       </div>
     );
   }
 }
 
-export default App;
+export default Main;

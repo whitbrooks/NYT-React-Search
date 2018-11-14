@@ -1,7 +1,7 @@
 import React from "react";
 import "./Search.css";
 
-const Search = () => (
+const Search = (props) => (
 
     <div className="row">
         <div className="col-sm-12">
@@ -18,23 +18,23 @@ const Search = () => (
                     <form>
 
                         <div className="form-group"> 
-                            <label for="search">Search Term:</label>
-                            <input type="text" className="form-control" id="search-term"></input>
+                            <label htmlFor="search">Search Term:</label>
+                            <input onChange={props.handleInputChange} value={props.value} type="text" className="form-control" placeholder="search for a topic"></input>
                         </div>
+
+                        {/* <div className="form-group">
+                            <label htmlFor="start-year">Start Year (Optional):</label>
+                            <input onChange={props.handleInputChange} type="text" className="form-control" id="start-year"></input>
+                        </div>
+
 
                         <div className="form-group">
-                            <label for="start-year">Start Year (Optional):</label>
-                            <input type="text" className="form-control" id="start-year"></input>
-                        </div>
+                            <label htmlFor="end-year">End Year (Optional):</label>
+                            <input onChange={props.handleInputChange} type="text" className="form-control" id="end-year"></input>
+                        </div> */}
 
-
-                        <div className="form-group">
-                            <label for="end-year">End Year (Optional):</label>
-                            <input type="text" className="form-control" id="end-year"></input>
-                        </div>
-
-                        <button type="submit" className="btn btn-default" id="run-search"><i className="fa fa-search"></i> Search</button>
-                        <button className="btn btn-default" id="clear-all"><i className="fa fa-trash"></i> Clear Results</button>
+                        <button onClick={props.handleFormSubmit} type="submit" className="btn btn-default" ><i className="fa fa-search"></i> Search</button>
+                       
 
                     </form>
                 </div>
