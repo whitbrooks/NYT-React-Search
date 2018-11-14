@@ -19,7 +19,7 @@ const Search = (props) => (
 
                         <div className="form-group"> 
                             <label htmlFor="search">Search Term:</label>
-                            <input onChange={props.handleInputChange} value={props.value} type="text" className="form-control" placeholder="search for a topic"></input>
+                            <input name="search" onChange={props.handleInputChange} value={props.value} type="text" className="form-control" placeholder="search for a topic"></input>
                         </div>
 
                         {/* <div className="form-group">

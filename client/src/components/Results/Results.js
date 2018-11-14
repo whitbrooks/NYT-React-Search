@@ -18,7 +18,7 @@ const Results = props => (
                     <a href={props.url} target="_blank">
                         <button className="btn btn-default ">View Article</button>
                     </a>
-                    <button className="btn btn-primary" onClick={() => props.handleSaveButton(props._id)}>Save</button>
+                    <button className="btn btn-primary" onClick={() => props.handleSaveButton(props.article)}>Save</button>
                 </div>
             </div>
         </div>

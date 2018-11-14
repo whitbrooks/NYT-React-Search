@@ -19,8 +19,11 @@ class Main extends Component {
   }
 
   searchArticles = query => {
+    console.log(query);
     API.search(query)
-      .then(res => this.setState({ result: res.data }))
+      .then(res => {
+      console.log(res);
+      this.setState({ result: res.data.response.docs })})
       .catch(err => console.log(err));
   };
 
@@ -47,9 +50,9 @@ class Main extends Component {
   };
 
 
-  handleSaveButton = (id) => {
+  handleSaveButton = (article) => {
     console.log("saveArticle");
-    API.saveArticle(id)
+    API.saveArticle(article)
       .then(this.getSaved());
   }
 
@@ -60,13 +63,15 @@ class Main extends Component {
   }
 
   renderResults = () => {
-    return this.state.articles.map(article => (
+    return this.state.result.map(article => (
       <Results
         _id={article._id}
         key={article._id}
         title={article.headline.main}
         date={article.pub_date}
         url={article.web_url}
+        handleSaveButton={this.handleSaveButton}
+        article={article}
       />
     ));
   }
@@ -91,10 +96,7 @@ class Main extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
-        <Results
-          renderResults={this.renderResults}
-      
-        />
+        {this.renderResults()}
         <Saved
           renderSaved={this.state.renderSaved}
         />

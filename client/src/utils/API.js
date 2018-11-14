@@ -1,7 +1,7 @@
 import axios from "axios";
-require('dotenv').config()
+// require('dotenv').config()
 const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
-const APIKEY = process.env.KEY;
+const APIKEY = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
 export default {
   // Query NYT API 
@@ -21,8 +21,13 @@ export default {
     return axios.delete("/api/article/" + id);
   },
   // Saves a article to the database
-  saveArticle: function(articleData) {
-    return axios.post("/api/article", articleData);
+  saveArticle: function(article) {
+    let cleanArticle = {
+      title: article.headline.main,
+      date: article.pub_date,
+      url: article.web_url
+    }
+    return axios.post("/api/article", cleanArticle);
   }
 
 };
