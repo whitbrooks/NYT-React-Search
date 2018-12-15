@@ -1,6 +1,6 @@
 # NYT React Search
 
-This app allows a user to search for, save, and annotate New York Times articles without reloading the webpage. It makes use of **React**, the **New York Times API**, and **Bootstrap**.
+This app allows a user to search for, save, and annotate New York Times articles without reloading the webpage. It makes use of **React**, the **New York Times API**, **Express.js**, **MongoDB and Mongoose**, and **Bootstrap**.
 
 A live version of the app can be viewed [here](https://nyt-search-tool.herokuapp.com/).
 
